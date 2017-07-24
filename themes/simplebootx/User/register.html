@@ -7,7 +7,9 @@
 <meta name="author" content="ThinkCMF">
 <tc_include file="Public:head" />
 </head>
-
+<style>
+.verify_img_cnt .verify_img,.mobile_verify_cnt .btn-success{float:right;}
+</style>
 <body class="body-white">
 	<tc_include file="Public:nav" />
 
@@ -21,7 +23,7 @@
 				</ul> -->
 
 				<div class="tab-content">
-					<div class="tab-pane" id="mobile">
+					<div class="tab-pane active" id="mobile">
 						<form class="form-horizontal js-ajax-form" action="{:U('user/register/doregister')}" method="post">
 		
 							<div class="control-group">
@@ -33,14 +35,14 @@
 							</div>
 							
 							<div class="control-group">
-								<div class="span4" style="margin-left: 0px;">
+								<div class="span4 verify_img_cnt" style="margin-left: 0px;">
 									<input type="text" name="verify" placeholder="验证码" style="width:232px;">
 									{:sp_verifycode_img('length=4&font_size=14&width=120&height=34&charset=1234567890&use_noise=1&use_curve=0')}
 								</div>
 							</div>
 		
 							<div class="control-group">
-								<div class="span4" style="margin-left: 0px;">
+								<div class="span4 mobile_verify_cnt" style="margin-left: 0px;">
 									<input type="text" name="mobile_verify" placeholder="手机验证码" style="width:232px;">
 									<a class="btn btn-success" style="width: 96px;">获取验证码</a>
 								</div>
@@ -57,7 +59,7 @@
 							</div>
 						</form>
 					</div>
-					<div class="tab-pane active" id="email">
+					<div class="tab-pane" id="email">
 						<form class="form-horizontal js-ajax-form" action="{:U('user/register/doregister')}" method="post">
 		
 							<div class="control-group">
