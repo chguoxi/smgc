@@ -1,6 +1,6 @@
 <?php
 namespace User\Controller;
-
+use Home\Helper\ServiceHelper as Service;
 use Common\Controller\HomebaseController;
 
 class RegisterController extends HomebaseController {
@@ -218,5 +218,13 @@ class RegisterController extends HomebaseController {
 		
 	}
 	
-	
+	public function sendSms(){
+	    $phone = I('phone');
+	    $type  = I('type');
+	    if (!Service::getInstance('Sms')->send($phone,$type)){
+	        $this->error(Service::getInstance('Sms')->getError());
+	    }else{
+	        $this->success('短信验证码发送成功!');
+	    }
+	}
 }
