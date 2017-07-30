@@ -220,7 +220,6 @@ class RegisterController extends HomebaseController {
 			$this->error("用户激活失败，激活码无效！",U("user/login/index"));
 		}
 		
-		
 	}
 	
 	public function sendSms(){

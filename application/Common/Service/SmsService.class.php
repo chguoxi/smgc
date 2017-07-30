@@ -81,7 +81,7 @@ class SmsService extends CommonService{
 	}
 	
 	private function _checkUserExist($phone,$type='register'){
-		$user = Service::getInstance('User')->getUserByPhone($phone);
+		$user = D('Users')->getUserByPhone($phone);
 		if ($user && $type=='register'){
 			$this->error = '该手机号码已注册,请登录';
 			return false;

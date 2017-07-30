@@ -27,6 +27,15 @@ class UsersModel extends CommonModel
 		return date('Y-m-d H:i:s');
 	}
 	
+	/**
+	 * 根据手机号码获取用户信息
+	 * 
+	 * @param string $mobile
+	 */
+	public function getUserByPhone($mobile=''){
+	    return $this->model->where("mobile='{$mobile}' and user_status=1")->find();
+	}
+	
 	protected function _before_write(&$data) {
 		parent::_before_write($data);
 		
@@ -35,11 +44,5 @@ class UsersModel extends CommonModel
 		}
 	}
 	
-	/**
-	 * 检查验证码
-	 */
-	protected function checkSms($code=''){
-	    
-	}
 }
 
