@@ -121,9 +121,7 @@ var timer = function(selector){
 	count -= 1;
 	if(count>0){
 		selector.text(count);
-		selector.unbind("click",function(){
-			return false;
-		})
+		selector.unbind();
 	}
 	else{
 		selector.text('重新发送');
