@@ -141,7 +141,7 @@ $(function(){
 		}
 		
 		$.ajax({
-			url:"<{:U('Register/sendSms')}>",
+			url:"{:U('Register/sendSms')}",
 			type:'post',
 			data:{phone:phone,type:'register'},
 			dataType:'json',
