@@ -125,7 +125,9 @@ var timer = function(selector){
 	}
 	else{
 		selector.text('重新发送');
-		$(".sendsms,.resend").bind("click",sendsms())
+		$(".sendsms,.resend").bind("click",function(){
+			sendsms()
+		})
 		return false;
 	}
 }
@@ -166,7 +168,9 @@ function sendsms(){
 	})
 }
 $(function(){
-	$(".sendsms,.resend").on("click",sendsms())
+	$(".sendsms,.resend").bind("click",function(){
+		sendsms();
+	})
 })
 </script>
 </html>
