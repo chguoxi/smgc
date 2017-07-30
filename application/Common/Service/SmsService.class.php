@@ -7,6 +7,8 @@ use Common\Helper\JuheHelper;
 class SmsService extends CommonService{
 	public $error;
 	public $model;
+	public $debug = TRUE;
+	
 	/**
 	 * 每日限制条数
 	 * @var integer
@@ -53,7 +55,11 @@ class SmsService extends CommonService{
 		}
 		
 		$code = rand(100000,999999);
-		$response = json_decode(JuheHelper::send($code,$phone,$type),true);
+		// 测试模式不真实发送短信
+		if (!$this->debug){
+		    $response = json_decode(JuheHelper::send($code,$phone,$type),true);
+		}
+		
 		
 		$data = array(
 				'phone'     => $phone,
