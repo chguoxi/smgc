@@ -117,7 +117,7 @@ var timer = function(selector){
 		return;
 	}
 	var count = parseInt(sms_expired);
-
+	sms_expired -= 1;
 	count -= 1;
 	if(count>0){
 		selector.text(count);
