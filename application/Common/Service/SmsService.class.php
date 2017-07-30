@@ -78,6 +78,12 @@ class SmsService extends CommonService{
 		}
 	}
 	
+	private function _iniDebugMode(){
+	    $this->_frequency = 9000;
+	    $this->_dayLimit  = 10000;
+	    $this->_hourLimit = 600;
+	}
+	
 	private function _checkPhoneValid($phone){
 		if (!ValidateHelper::isPhone($phone)){
 			$this->error = '手机号码格式不正确';
