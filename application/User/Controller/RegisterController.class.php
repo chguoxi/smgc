@@ -1,6 +1,6 @@
 <?php
 namespace User\Controller;
-use Home\Helper\ServiceHelper as Service;
+use Common\Helper\ServiceHelper as Service;
 use Common\Controller\HomebaseController;
 
 class RegisterController extends HomebaseController {
@@ -44,6 +44,7 @@ class RegisterController extends HomebaseController {
             //array(验证字段,验证规则,错误提示,验证条件,附加规则,验证时间)
             array('mobile', 'require', '手机号不能为空！', 1 ),
             array('mobile','','手机号已被注册！！',0,'unique',3),
+            array('mobile_verify','require','手机验证码不能为空！！',1),
             array('password','require','密码不能为空！',1),
             array('password','5,20',"密码长度至少5位，最多20位！",1,'length',3),
         );
@@ -57,7 +58,11 @@ class RegisterController extends HomebaseController {
 	    if(!sp_check_mobile_verify_code()){
 	        $this->error("手机验证码错误！");
         }
-	     
+	    
+        if (!Service::getInstance('Sms')->validateSms($code,$phone,$type)){
+            $this->error(Service::getInstance('Sms')->getError());
+        }
+        
 	    $password=I('post.password');
 	    $mobile=I('post.mobile');
 	    

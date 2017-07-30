@@ -5,6 +5,7 @@
  */
 
 namespace Common\Helper;
+use Think\Exception;
 
 class JuheHelper {
 	private static $_APP_KEY   = 'b971dd4eaa843db6f4cc45eb310740b9';

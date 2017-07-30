@@ -35,5 +35,11 @@ class UsersModel extends CommonModel
 		}
 	}
 	
+	/**
+	 * 检查验证码
+	 */
+	protected function checkSms($code=''){
+	    
+	}
 }
 
