@@ -19,7 +19,7 @@ class ServiceHelper{
 		// first letter with up case 
 		$service = ucfirst($service);
 		// use name space
-		$serviceName = "Home\\Service\\{$service}Service";
+		$serviceName = "Common\\Service\\{$service}Service";
 		if (!class_exists($serviceName)){
 			return false;
 		}
