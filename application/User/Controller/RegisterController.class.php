@@ -226,8 +226,8 @@ class RegisterController extends HomebaseController {
 	public function sendSms(){
 	    $phone = I('phone');
 	    $type  = I('type');
-	    if (!Service::getInstance('Sms')->send($phone,$type)){
-	        $this->error(Service::getInstance('Sms')->getError());
+	    if (!Service::getInstance('Common/Sms')->send($phone,$type)){
+	        $this->error(Service::getInstance('Common/Sms')->getError());
 	    }else{
 	        $this->success('短信验证码发送成功!');
 	    }
