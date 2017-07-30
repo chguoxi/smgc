@@ -33,7 +33,7 @@ class UsersModel extends CommonModel
 	 * @param string $mobile
 	 */
 	public function getUserByPhone($mobile=''){
-	    return $this->model->where("mobile='{$mobile}' and user_status=1")->find();
+	    return $this->where("mobile='{$mobile}' and user_status=1")->find();
 	}
 	
 	protected function _before_write(&$data) {
