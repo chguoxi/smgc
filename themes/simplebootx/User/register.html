@@ -171,31 +171,7 @@ $(function(){
 		})
 	})
 	
-	$(".regbtn").on("click",function(){
-		var phone = $("input[name='phone']").val();
-		var code = $("input[name='code']").val();
-		var preg  = /[\d]{6}/;
-		
-		if(typeof(phone)=='undefined' || !preg.test(phone)){
-			layer.msg('请输入你收到的6位数字短信验证码!');
-			return;
-		}
-		
-		$.ajax({
-			url:"<{:U('User/join')}>",
-			type:'post',
-			data:{phone:phone,code:code,type:'register'},
-			dataType:'json',
-			//async:false,
-			success:function(data){
-				layer.msg(data.info);
-				if(data.status==1 && data.url !=''){
-					window.location.href=data.url;
-				}
 
-			}
-		})		
-	})
 	
 })
 </script>
