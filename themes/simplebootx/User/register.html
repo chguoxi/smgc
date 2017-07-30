@@ -126,7 +126,7 @@ var timer = function(selector){
 	else{
 		selector.text('重新发送');
 		$(".sendsms,.resend").bind("click",function(){
-			sendsms()
+			sendsms();
 		})
 		return false;
 	}
