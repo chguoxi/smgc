@@ -45,7 +45,7 @@
 							<div class="control-group">
 								<div class="span4 mobile_verify_cnt" style="margin-left: 0px;">
 									<input type="text" name="mobile_verify" placeholder="手机验证码" style="width:232px;">
-									<a class="btn btn-success sendsms" style="width: 96px;">获取验证码</a>
+									<a class="btn btn-success sendsms" id="cutdown" style="width: 96px;">获取验证码</a>
 								</div>
 							</div>
 		
@@ -116,17 +116,17 @@ var timer = function(selector){
 	if(typeof(selector)=='undefined'){
 		return;
 	}
-	var count = parseInt(selector.text());
+	var count = parseInt(sms_expired);
 
 	count -= 1;
 	if(count>0){
-		$(".resend").hide();
-		selector.show();
 		selector.text(count);
+		selector.click(function(){
+			return false;
+		})
 	}
 	else{
-		selector.text(sms_expired).hide();
-		$(".resend").show();
+		selector.text('重新发送');
 		return false;
 	}
 }
@@ -149,14 +149,10 @@ $(function(){
 			success:function(data){
 				if(data.status==1){
 					layer.msg(data.info);
-					if($(".step-2").not(":visible")){
-						$(".step-1").addClass("hidden");
-						$(".step-2").removeClass("hidden");			
-						$("#step2-phone").text(phone)
-					}
+					
 					var runtime = 0;
 					var interaval = setInterval(function(){
-						timer($('#downnum'));
+						timer($('#cutdown'));
 						runtime +=1;
 						if(runtime==sms_expired){
 							clearInterval(interaval);
