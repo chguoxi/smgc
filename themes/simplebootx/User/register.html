@@ -121,7 +121,7 @@ var timer = function(selector){
 	count -= 1;
 	if(count>0){
 		selector.text(count);
-		selector.click(function(){
+		selector.unbind("click",function(){
 			return false;
 		})
 	}
