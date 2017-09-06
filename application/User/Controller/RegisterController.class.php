@@ -229,7 +229,7 @@ class RegisterController extends HomebaseController {
 	    
 	    $Verify = new \Think\Verify();
 	    if (!$Verify->check($verifyCode)){
-	    	$this->error('图片验证码不正确!');
+	    	$this->error('图片验证码不正确!'.$verifyCode);
 	    }
 	    if (!Service::getInstance('Sms')->send($phone,$type)){
 	        $this->error(Service::getInstance('Sms')->getError());
