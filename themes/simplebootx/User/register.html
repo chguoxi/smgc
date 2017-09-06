@@ -113,6 +113,7 @@
 </body>
 <script type="text/javascript">
 // 短信过期时间
+
 var sms_expired = 90;
 
 var timer = function(selector){
@@ -120,11 +121,17 @@ var timer = function(selector){
 		return;
 	}
 	var count = parseInt(sms_expired);
+	sms_expired -= 1;
 	count -= 1;
 	if(count>0){
 		selector.text(count);
+		//selector.unbind();
 	}
 	else{
+		selector.text('重新发送');
+		//$(".sendsms,.resend").bind("click",function(){
+		//	sendsms();
+		//})
 		return false;
 	}
 }
