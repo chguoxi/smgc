@@ -7,7 +7,7 @@ use Common\Helper\JuheHelper;
 class SmsService extends CommonService{
 	public $error;
 	public $model;
-	public $debug = TRUE;
+	public $debug = false;
 	
 	/**
 	 * 每日限制条数
