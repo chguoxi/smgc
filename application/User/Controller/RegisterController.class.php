@@ -36,9 +36,6 @@ class RegisterController extends HomebaseController {
 	// 前台用户手机注册
 	private function _do_mobile_register(){
 	    
-	    if(!sp_check_verify_code()){
-	        $this->error("验证码错误！");
-	    }
 	     
         $rules = array(
             //array(验证字段,验证规则,错误提示,验证条件,附加规则,验证时间)
@@ -55,9 +52,9 @@ class RegisterController extends HomebaseController {
 	        $this->error($users_model->getError());
 	    }
 	    
-	    if(!sp_check_mobile_verify_code()){
-	        $this->error("手机验证码错误！");
-        }
+// 	    if(!sp_check_mobile_verify_code()){
+// 	        $this->error("手机验证码错误！");
+//         }
 	    
         if (!Service::getInstance('Sms')->validateSms($code,$phone,$type)){
             $this->error(Service::getInstance('Sms')->getError());
@@ -228,6 +225,7 @@ class RegisterController extends HomebaseController {
 	    $verifyCode = I('verify');
 	    
 	    $Verify = new \Think\Verify();
+	    
 	    if (!$Verify->check($verifyCode)){
 	    	$this->error('图片验证码不正确!');
 	    }
