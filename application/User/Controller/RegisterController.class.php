@@ -225,6 +225,12 @@ class RegisterController extends HomebaseController {
 	public function sendSms(){
 	    $phone = I('phone');
 	    $type  = I('type');
+	    $verifyCode = I('verify');
+	    
+	    $Verify = new \Think\Verify($config);
+	    if (!$Verify->check($verify)){
+	    	$this->error('图片验证码不正确!');
+	    }
 	    if (!Service::getInstance('Sms')->send($phone,$type)){
 	        $this->error(Service::getInstance('Sms')->getError());
 	    }else{
