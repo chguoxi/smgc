@@ -227,8 +227,8 @@ class RegisterController extends HomebaseController {
 	    $type  = I('type');
 	    $verifyCode = I('verify');
 	    
-	    $Verify = new \Think\Verify($config);
-	    if (!$Verify->check($verify)){
+	    $Verify = new \Think\Verify();
+	    if (!$Verify->check($verifyCode)){
 	    	$this->error('图片验证码不正确!');
 	    }
 	    if (!Service::getInstance('Sms')->send($phone,$type)){
