@@ -129,6 +129,9 @@ class SmsService extends CommonService{
 		return true;
 	}
 	
+	public function getError(){
+		return $this->error;
+	}
 	/**
 	 * 一小时发送量
 	 */
