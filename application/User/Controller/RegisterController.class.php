@@ -57,7 +57,7 @@ class RegisterController extends HomebaseController {
 //         }
 	    
         if (!Service::getInstance('Sms')->validateSms($code,$phone,$type)){
-            $this->error(Service::getInstance('Sms')->getError());
+            //$this->error(Service::getInstance('Sms')->getError());
         }
         
 	    $password=I('post.password');
