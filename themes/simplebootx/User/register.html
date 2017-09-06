@@ -45,8 +45,8 @@
 							<div class="control-group">
 								<div class="span4 mobile_verify_cnt" style="margin-left: 0px;">
 									<input type="text" name="mobile_verify" placeholder="手机验证码" style="width:232px;">
-									<a class="btn btn-success sendsms hidden" id="cutdown" style="width: 96px;">90</a>
-									<a class="btn btn-success sendsms" id="sendbtn" style="width: 96px;">获取验证码</a>
+									<a class="btn btn-success hidden" id="cutdown" style="width: 96px;">90</a>
+									<a class="btn btn-success" id="sendbtn" style="width: 96px;">获取验证码</a>
 								</div>
 								
 
@@ -155,11 +155,17 @@ function sendsms(){
 				layer.msg(data.info);
 				
 				var runtime = 0;
+				$('#cutdown').show();
+				$('#sendbtn').hide();
+				
 				var interaval = setInterval(function(){
 					timer($('#cutdown'));
 					runtime +=1;
 					if(runtime==sms_expired){
 						clearInterval(interaval);
+						$('#sendbtn').text('重新发送');
+						$('#sendbtn').show();
+						$('#cutdown').hide();
 						}
 				},1000);
 				
@@ -172,7 +178,7 @@ function sendsms(){
 }
 $(function(){
 
-	$(".sendsms,.resend").bind("click",function(){
+	$(".sendsms").bind("click",function(){
 		sendsms();
 	})
 })
