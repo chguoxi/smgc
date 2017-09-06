@@ -49,7 +49,7 @@ class RegisterController extends HomebaseController {
 	    $users_model=M("Users");
 	     
 	    if($users_model->validate($rules)->create()===false){
-	        $this->error($users_model->getError());
+	        //$this->error($users_model->getError());
 	    }
 	    
 // 	    if(!sp_check_mobile_verify_code()){
