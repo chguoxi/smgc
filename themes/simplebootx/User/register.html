@@ -122,7 +122,7 @@ var timer = function(selector,count){
 	}
 	//var count = parseInt(sms_expired);
 	//sms_expired -= 1;
-	count -= 1;
+	//count -= 1;
 	if(count>0){
 		selector.text(count);
 		//selector.unbind();
@@ -160,7 +160,7 @@ function sendsms(){
 				$('#sendbtn').hide();
 				
 				var interaval = setInterval(function(){
-					timer($('#cutdown'),90-runtime);
+					timer($('#cutdown'),sms_expired-runtime);
 					runtime +=1;
 					if(runtime==sms_expired){
 						clearInterval(interaval);
