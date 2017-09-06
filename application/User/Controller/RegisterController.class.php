@@ -49,7 +49,7 @@ class RegisterController extends HomebaseController {
 	    $users_model=M("Users");
 	     
 	    if($users_model->validate($rules)->create()===false){
-	        //$this->error($users_model->getError());
+	        $this->error('信息不合法');
 	    }
 	    
 // 	    if(!sp_check_mobile_verify_code()){
@@ -57,7 +57,7 @@ class RegisterController extends HomebaseController {
 //         }
 	    
         if (!Service::getInstance('Sms')->validateSms($code,$phone,$type)){
-            //$this->error(Service::getInstance('Sms')->getError());
+            $this->error(Service::getInstance('Sms')->getError());
         }
         
 	    $password=I('post.password');
