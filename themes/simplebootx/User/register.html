@@ -123,14 +123,8 @@ var timer = function(selector){
 	count -= 1;
 	if(count>0){
 		selector.text(count);
-		selector.unbind();
 	}
 	else{
-		
-		selector.text('重新发送');
-		$(".sendsms,.resend").bind("click",function(){
-			sendsms();
-		})
 		return false;
 	}
 }
