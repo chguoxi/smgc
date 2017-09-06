@@ -45,8 +45,11 @@
 							<div class="control-group">
 								<div class="span4 mobile_verify_cnt" style="margin-left: 0px;">
 									<input type="text" name="mobile_verify" placeholder="手机验证码" style="width:232px;">
-									<a class="btn btn-success sendsms" id="cutdown" style="width: 96px;">获取验证码</a>
+									<a class="btn btn-success sendsms hidden" id="cutdown" style="width: 96px;">90</a>
+									<a class="btn btn-success sendsms" id="sendbtn" style="width: 96px;">获取验证码</a>
 								</div>
+								
+
 							</div>
 		
 							<div class="control-group">
@@ -117,13 +120,13 @@ var timer = function(selector){
 		return;
 	}
 	var count = parseInt(sms_expired);
-	sms_expired -= 1;
 	count -= 1;
 	if(count>0){
 		selector.text(count);
 		selector.unbind();
 	}
 	else{
+		
 		selector.text('重新发送');
 		$(".sendsms,.resend").bind("click",function(){
 			sendsms();
