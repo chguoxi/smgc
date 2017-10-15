@@ -7,7 +7,7 @@ use Common\Helper\JuheHelper;
 class SmsService extends CommonService{
 	public $error;
 	public $model;
-	public $debug = TRUE;
+	public $debug = false;
 	
 	/**
 	 * 每日限制条数
@@ -129,6 +129,9 @@ class SmsService extends CommonService{
 		return true;
 	}
 	
+	public function getError(){
+		return $this->error;
+	}
 	/**
 	 * 一小时发送量
 	 */
